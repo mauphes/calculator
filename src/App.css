@@ -1,32 +1,44 @@
-.App {
-  text-align: center;
+.App{
+    padding: 0 15px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.form{
+    padding: 15px 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.field_in_row{
+    display: inline-block;
+    margin-right: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.field_in_row label{
+    display: block;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.error{
+    margin-top: 15px;
+    color: #c00;
+}
+
+table{
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+table thead td{
+    background: #ccc;
+}
+
+table tbody tr:nth-child(even){
+    background: #e8e8e8;
+}
+
+table td{
+    border: 1px solid;
+    height: 40px;
+    padding: 5px 10px;
+}
+
+.discountBlock input{
+    width: 20px;
 }
