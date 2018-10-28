@@ -61,6 +61,7 @@ class App extends Component {
         if (el.expensive) {
           delete el.expensive;
           el.discountPrice = sum > discountSum ? sum - discountSum : 0;
+          break;
         }
       }
       this.setState({ products });
