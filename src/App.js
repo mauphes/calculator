@@ -20,7 +20,6 @@ class App extends Component {
 
   onKeyPress = e => {
     const charCode = e.which || e.keyCode;
-    console.log(charCode);
     if(charCode > 31 && (charCode < 48 || charCode > 57)) e.preventDefault();
   };
 
