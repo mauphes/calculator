@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 
 class App extends Component {
@@ -16,6 +16,12 @@ class App extends Component {
 
   handleChange = (type, e) => {
     this.setState({ [type]: e.target.value });
+  };
+
+  onKeyPress = e => {
+    const charCode = e.which || e.keyCode;
+    console.log(charCode);
+    if(charCode > 31 && (charCode < 48 || charCode > 57)) e.preventDefault();
   };
 
   addProduct = () => {
@@ -42,7 +48,6 @@ class App extends Component {
       products = products.map(product => {
         const discountPrice = product.price - product.price * discountPercent;
         if (!flag && (product.price === expensiveProductPrice)) {
-          //product.discountPrice = Math.floor(discountPrice);
           product.expensive = true;
           flag = true;
         } else {
@@ -56,7 +61,7 @@ class App extends Component {
         const el = products[i];
         if (el.expensive) {
           delete el.expensive;
-          el.discountPrice = sum - discountSum;
+          el.discountPrice = sum > discountSum ? sum - discountSum : 0;
         }
       }
       this.setState({ products });
@@ -75,7 +80,7 @@ class App extends Component {
           </div>
           <div className="field_in_row">
             <label htmlFor="productPrice">Цена</label>
-            <input type="text" id="productPrice" value={price} onChange={this.handleChange.bind(this, 'price')}/>
+            <input type="text" id="productPrice" value={price} onKeyPress={this.onKeyPress} onChange={this.handleChange.bind(this, 'price')}/>
           </div>
           <div className="field_in_row">
             <button onClick={this.addProduct}>Добавить</button>
@@ -103,7 +108,7 @@ class App extends Component {
           </tbody>
         </table>
         <div className="discountBlock">
-          Применить скидку <input type="text" value={discount || ''} onChange={this.handleChange.bind(this, 'discount')}/> рублей
+          Применить скидку <input type="text" value={discount || ''} onKeyPress={this.onKeyPress} onChange={this.handleChange.bind(this, 'discount')}/> рублей
           &nbsp;<button onClick={() => this.setState({ allowDiscount: parseInt(discount, 10) }, this.calcDiscount)}>Применить</button>
         </div>
       </div>
